@@ -4,7 +4,7 @@ query   : SELECT columns
           FROM source=identifier
           whereClause?
           limitClause?
-           EOF;
+          EOF;
 
 columns : column (',' column)*;
 
@@ -23,7 +23,7 @@ identifier
         :  IDENTIFIER
         ;
 
-SELECT  : S E L E C T;
+SELECT  : 'select';
 
 WHERE   : W H E R E;
 AS      : A S;
