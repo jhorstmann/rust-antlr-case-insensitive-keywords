@@ -1,48 +1,12 @@
 grammar Query;
 
-query   : SELECT columns
-          FROM source=identifier
-          whereClause?
-          limitClause?
-          EOF;
+query   : SELECT EOF;
 
-columns : column (',' column)*;
+SELECT  : S E L E C T;
 
-column  : name=identifier (AS alias=identifier)?
-        ;
-
-whereClause
-        : WHERE name=identifier
-        ;
-
-limitClause
-        : LIMIT limit=NUMERIC_LITERAL
-        ;
-
-identifier
-        :  IDENTIFIER
-        ;
-
-SELECT  : 'select';
-
-WHERE   : W H E R E;
-AS      : A S;
-FROM    : F R O M;
-LIMIT   : L I M I T;
-
-NUMERIC_LITERAL
-        : DIGIT+
-        ;
-
-IDENTIFIER
-        : [a-zA-Z_] [a-zA-Z_0-9]*
-        ;
-
-SPACES  : [ \t\r\n] -> skip
-        ;
+SPACES  : [ \t\r\n] -> skip ;
 
 fragment DIGIT      : [0-9];
-
 
 fragment A  : ('a'|'A');
 fragment B  : ('b'|'B');
